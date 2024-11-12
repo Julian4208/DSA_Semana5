@@ -28,9 +28,8 @@ jobs:
       - run:
           name: Deploy to Railway App
           command: |
-            cd bankchurn-api 
-            railway up --service=gregarious-truth
-            railway up --detach
+            cd bankchurn-api
+            railway up --service=gregarious-truth --detach
 
 
 tags_only: &tags_only
@@ -41,11 +40,11 @@ tags_only: &tags_only
       only: /^.*/
 
 workflows:
-  version: 1
+  version: 2
   deploy_pipeline:
     jobs:
       - deploy_app_to_railway:
           filters:
             branches:
               only:
-                - main
+                - master
